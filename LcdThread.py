@@ -36,7 +36,7 @@ E_PULSE = 0.0005
 E_DELAY = 0.0005
 
 class LcdThread(threading.Thread):
-    def __init__(self, address=0x20, width=20):
+    def __init__(self, address=0x27, width=20):
         threading.Thread.__init__(self)
         self.stopping = False
 
