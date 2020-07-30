@@ -15,6 +15,9 @@ import time
 import smbus
 from FlightDetails import FlightDetails
 
+bus = smbus.SMBus(1)
+time.sleep(1) #To prevent iO 121 Error
+
 log = logging.getLogger('root')
 
 # Define some device constants
