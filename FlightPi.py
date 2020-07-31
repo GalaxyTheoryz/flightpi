@@ -39,7 +39,7 @@ class FlightPi:
     def execute(self):
         log.info("Starting up FlightPi")
 
-        self.lcdThread = LcdThread(0x20,20)
+        self.lcdThread = LcdThread(0x27,20)
         self.addReceiver(self.lcdThread.processFlight)
         self.lcdThread.start()
 
@@ -47,7 +47,7 @@ class FlightPi:
         #self.addReceiver(self.arduinoThread.processFlight)
         #self.arduinoThread.start()
 
-        self.sbsThread = SbsThread("mercury",30003)
+        self.sbsThread = SbsThread("mercury",30005)
         self.sbsThread.addReceiver(self.processMessage)
         self.sbsThread.start()
 
