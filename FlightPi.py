@@ -47,7 +47,7 @@ class FlightPi:
         #self.addReceiver(self.arduinoThread.processFlight)
         #self.arduinoThread.start()
 
-        self.sbsThread = SbsThread("mercury",30005)
+        self.sbsThread = SbsThread("mercury",30003)
         self.sbsThread.addReceiver(self.processMessage)
         self.sbsThread.start()
 
