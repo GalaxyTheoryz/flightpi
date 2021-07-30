@@ -1,4 +1,4 @@
-<p style="text-align: justify;"><span style="text-decoration: underline;">Instructions for the FlightPi LCD Script by Matt Dyson (edited by Banham)</span></p>
+<p style="text-align: justify;"><span style="text-decoration: underline;">Instructions for the FlightPi LCD Script</span></p>
 <p style="text-align: justify;"><strong>This method only uses the LCD and does not utilise the NeoPixels or Arduino</strong></p>
 <p style="text-align: justify;"><span style="text-decoration: underline;">Prerequisites</span></p>
 <ul>
