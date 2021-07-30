@@ -12,7 +12,7 @@
 </ul>
 <p style="text-align: justify;"><span style="text-decoration: underline;">Optional Prerequisites</span></p>
 <ul>
-<li>20x04 LCD Module Case (<a href="https://bit.ly/3gsYBht" target="_blank" rel="noopener">https://bit.ly/3gsYBht</a>) *</li>
+<li>20x04 LCD Module Case (<a href="https://bit.ly/3gsYBht" target="_blank" rel="noopener">https://www.aliexpress.com/item/1005002234319914.html</a>) *</li>
 <li>Raspberry Pi Case (<a href="https://bit.ly/39P5E1B" target="_blank" rel="noopener"><span style="color: #0563c1;">https://bit.ly/39P5E1B</span></a>) *</li>
 <li>2M Micro USB Cable</li>
 </ul>
