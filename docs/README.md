@@ -5,14 +5,14 @@
 <li>Raspberry Pi 2B or better (I got mine from CEX for &pound;15)</li>
 <li>Female-Female Dupont Cables (<a href="https://amzn.to/3k0B9dA" target="_blank" rel="noopener"><span style="color: #0563c1;">https://amzn.to/3k0B9dA</span></a>)</li>
 <li>RTL2832U + R820T2 RTL-SDR ADS-B Antenna &amp; USB Receiver</li>
-<li>20x04 LCD Module (<a href="https://bit.ly/3gky2ei" target="_blank" rel="noopener"><span style="color: #0563c1;">https://bit.ly/3gky2ei</span></a>) *</li>
+<li>20x04 LCD Module (<a href="https://www.aliexpress.com/item/1005002234319914.html" target="_blank" rel="noopener"><span style="color: #0563c1;">https://www.aliexpress.com/item/1005002234319914.html</span></a>) *</li>
 <li>8GB Micro SD Card</li>
 <li>Raspberry Pi WiFi Adapter (If your Pi does not have on-board WIFI)</li>
 <li>Micro USB Cable &amp; Plug</li>
 </ul>
 <p style="text-align: justify;"><span style="text-decoration: underline;">Optional Prerequisites</span></p>
 <ul>
-<li>20x04 LCD Module Case (<a href="https://bit.ly/3gsYBht" target="_blank" rel="noopener">https://www.aliexpress.com/item/1005002234319914.html</a>) *</li>
+<li>20x04 LCD Module Case (<a href="https://www.aliexpress.com/item/33040735359.html" target="_blank" rel="noopener">https://www.aliexpress.com/item/33040735359.html</a>) *</li>
 <li>Raspberry Pi Case (<a href="https://bit.ly/39P5E1B" target="_blank" rel="noopener"><span style="color: #0563c1;">https://bit.ly/39P5E1B</span></a>) *</li>
 <li>2M Micro USB Cable</li>
 </ul>
