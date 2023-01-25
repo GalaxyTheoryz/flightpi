@@ -9,12 +9,13 @@ Part of FlightPi - http://github.com/mattdy/flightpi
 """
 import logging
 import sys
+import os
 
 log = logging.getLogger('root')
-log.setLevel(logging.DEBUG)
+log.setLevel(logging.INFO)
 
 stream = logging.StreamHandler(sys.stdout)
-stream.setLevel(logging.DEBUG)
+stream.setLevel(logging.INFO)
 
 formatter = logging.Formatter('[%(asctime)s] %(levelname)8s %(module)15s: %(message)s')
 stream.setFormatter(formatter)
@@ -25,6 +26,7 @@ from SbsThread import SbsThread
 from LcdThread import LcdThread
 #from ArduinoThread import ArduinoThread
 import time
+#import schedule
 
 class FlightPi:
     def __init__(self):
@@ -32,6 +34,9 @@ class FlightPi:
         self.aircraft = { }
         self.receivers = [ ]
         self.display = None
+#        log.info("Starting up VPN in 1 minute")
+#        time.sleep(60)
+#        os.system("sudo service openvpn restart")
 
     def stop(self):
         self.stopping = True
@@ -43,23 +48,25 @@ class FlightPi:
         self.addReceiver(self.lcdThread.processFlight)
         self.lcdThread.start()
 
-        #self.arduinoThread = ArduinoThread("/dev/ttyUSB0")
-        #self.addReceiver(self.arduinoThread.processFlight)
-        #self.arduinoThread.start()
+#        self.arduinoThread = ArduinoThread("/dev/ttyUSB0")
+#        self.addReceiver(self.arduinoThread.processFlight)
+#        self.arduinoThread.start()
 
-        self.sbsThread = SbsThread("mercury",30003)
+        self.sbsThread = SbsThread('192.168.1.3',30003) #specify server for SBS messages
         self.sbsThread.addReceiver(self.processMessage)
         self.sbsThread.start()
 
         log.info("Starting loop")
+ #       schedule.every().day.at("22:00").do(self.stop) #stops at 10pm
         try:
             while(self.stopping is False):
                 time.sleep(1)
                 self.updateAircraft()
+#                schedule.run_pending()
         except (KeyboardInterrupt, SystemExit):
-            log.warn("Interrupted, shutting down")
+            log.warning("Interrupted, shutting down")
 
-        #self.arduinoThread.stop()
+#        self.arduinoThread.stop()
         self.sbsThread.stop()
         self.lcdThread.stop()
 
@@ -150,3 +157,4 @@ class FlightPi:
 
 flightpi = FlightPi()
 flightpi.execute()
+
