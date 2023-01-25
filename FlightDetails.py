@@ -1,27 +1,24 @@
 """
 FlightDetails.py
-
 Manage the database of known ICAO24 decodes, fetch from external APIs as needed
-
 Thanks to 'joshuadouch' for the API - https://radarspotting.com/forum/index.php?topic=6117.0
-
 Matt Dyson
 08/06/18
-
 Part of FlightPi - http://github.com/mattdy/flightpi
+Updated API URL's as per update to forum post listed above. With help from https://github.com/GalaxyTheoryz/flightpi/blob/33f0e4729ee9cc15891b992310b0c9cecbbb68ac/FlightDetails.py
 """
 
 import logging
 import sys
 import sqlite3
 import time
-import urllib2
+import urllib.request
 
 log = logging.getLogger('root')
 TIMEOUT=60 # Number of minutes to keep a cache of our API hits
 
 class FlightDetails:
-    def __init__(self,filename="details.sql"):
+    def __init__(self,filename="/home/pi/flightpi/details.sql"):
         log.debug("Starting FlightDetails database at %s" % (filename))
         self.apiCache = { }
 
@@ -41,11 +38,11 @@ class FlightDetails:
                     return None
             try:
                 log.debug("Attempting to fetch details from external API")
-                req = urllib2.Request("https://api.joshdouch.me/hex-type.php?hex=%s" % (icao), headers={ 'User-Agent': 'Mozilla/5.0' })
-                type = urllib2.urlopen(req).read()
+                with urllib.request.urlopen("https://api.joshdouch.me/hex-type.php?hex=%s" % (icao)) as response:
+                    type = response.read()
+                with urllib.request.urlopen("https://api.joshdouch.me/hex-reg.php?hex=%s" % (icao)) as response:
+                    reg = response.read()
 
-                req = urllib2.Request("https://api.joshdouch.me/hex-reg.php?hex=%s" % (icao), headers={ 'User-Agent': 'Mozilla/5.0' })
-                reg = urllib2.urlopen(req).read()
 
                 if type=="n/a" or type=="0": type=None
                 if reg=="n/a" or reg=="0": reg=None
@@ -54,7 +51,7 @@ class FlightDetails:
 
                 if type is not None and reg is not None:
                     log.info("Successful fetch for %s, now inserting into database" % (icao))
-                    self.c.execute("INSERT INTO `airframe` (icao, type, registration) VALUES (?, ? ,?)", [icao, type, reg])
+                    self.c.execute("INSERT INTO `airframe` (icao, type, registration) VALUES (?, ? ,?)", [str(icao), str(type), str(reg)])
                     self.conn.commit()
                     row = (icao, type, reg)
 
